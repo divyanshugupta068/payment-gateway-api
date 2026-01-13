@@ -1,33 +1,9 @@
 [phases.setup]
-nixPkgs = ['maven', 'jdk17']
+nixPkgs = ['jdk17', 'maven']
 
 [phases.build]
-cmds = ['mvn clean package -DskipTests']
+cmds = ['chmod +x mvnw', './mvnw clean package -DskipTests']
 
 [start]
 cmd = 'java -jar target/*.jar'
 ```
-
-5. **Commit:** "Add Railway config"
-
-6. Railway will **auto-redeploy** in 5 minutes
-
----
-
-## 🚀 EVEN FASTER: Use Render Instead
-
-Since Railway is having Java issues, let's use Render which handles this better:
-
-### **Deploy to Render (5 mins):**
-
-1. **Go to:** https://render.com
-
-2. **New +** → **Web Service**
-
-3. **Connect:** `payment-gateway-api` repo
-
-4. **Settings:**
-```
-   Name: payment-gateway-api
-   Environment: Docker
-   Instance Type: Free
